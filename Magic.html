@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>Magic!</title>
+</head>
+
+<body>
+  <a href="Quotebox.html">Quotebox</a><br>
+  <a href="HeroConverter.html">Hero Converter</a><br>
+  <a href="Math.html">Number Analysis</a><br>
+  <textarea id="textArea" rows="10" cols="30"></textarea><br>
+  <button onclick="clearText()">Clear All</button>
+  <button onclick="toggleCase()">Capitalize</button>
+  <button onclick="sortLines()">Sort</button>
+  <button onclick="reverseLines()">Reverse</button>
+  <button onclick="stripBlankLines()">Strip Blank</button>
+  <button onclick="addNumbers()">Add Numbers</button>
+  <button onclick="shuffleLines()">Shuffle</button>
+
+  <script>
+    function clearText() {
+      var textArea = document.getElementById("textArea");
+      textArea.value = "";
+    }
+
+    function toggleCase() {
+      var textArea = document.getElementById("textArea");
+      var lines = textArea.value.split("\n");
+      var toggledLines = [];
+      
+      for (var i = 0; i < lines.length; i++) {
+        if (lines[i] === "") {
+          toggledLines.push(lines[i]);
+        } else {
+          if (lines[i] === lines[i].toUpperCase()) {
+            toggledLines.push(lines[i].toLowerCase());
+          } else {
+            toggledLines.push(lines[i].toUpperCase());
+          }
+        }
+      }
+      
+      textArea.value = toggledLines.join("\n");
+    }
+
+    function sortLines() {
+      var textArea = document.getElementById("textArea");
+      var lines = textArea.value.split("\n");
+      lines.sort();
+      textArea.value = lines.join("\n");
+    }
+
+    function reverseLines() {
+      var textArea = document.getElementById("textArea");
+      var lines = textArea.value.split("\n");
+      lines.reverse();
+      textArea.value = lines.join("\n");
+    }
+
+    function stripBlankLines() {
+      var textArea = document.getElementById("textArea");
+      var lines = textArea.value.split("\n");
+      var strippedLines = [];
+
+      for (var i = 0; i < lines.length; i++) {
+        var trimmedLine = lines[i].trim();
+        if (trimmedLine !== "") {
+          strippedLines.push(trimmedLine);
+        }
+      }
+
+      textArea.value = strippedLines.join("\n");
+    }
+
+    function addNumbers() {
+      var textArea = document.getElementById("textArea");
+      var lines = textArea.value.split("\n");
+      var numberedLines = [];
+
+      for (var i = 0; i < lines.length; i++) {
+        if (lines[i] !== "") {
+          numberedLines.push((i + 1) + ". " + lines[i]);
+        } else {
+          numberedLines.push(lines[i]);
+        }
+      }
+
+      textArea.value = numberedLines.join("\n");
+    }
+
+    function shuffleLines() {
+      var textArea = document.getElementById("textArea");
+      var lines = textArea.value.split("\n");
+      
+      for (var i = lines.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        var temp = lines[i];
+        lines[i] = lines[j];
+        lines[j] = temp;
+      }
+      
+      textArea.value = lines.join("\n");
+    }
+  </script>
+</body>
+</html>

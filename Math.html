@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>Number Analysis</title>
+</head>
+
+<body>
+    <a href="Quotebox.html">Quotebox</a><br>
+    <a href="HeroConverter.html">Hero Converter</a><br>
+    <a href="Magic.html">Magic!</a><br>
+  <form>
+    <label for="numberInput">Enter a series of numbers (separated by commas):</label><br>
+    <input type="text" id="numberInput"><br>
+    <button type="button" onclick="analyzeNumbers()">Analyze</button>
+  </form>
+
+  <h2>Analysis Result:</h2>
+  <p id="max"></p>
+  <p id="min"></p>
+  <p id="sum"></p>
+  <p id="average"></p>
+  <p id="reverse"></p>
+
+  <script>
+    function analyzeNumbers() {
+      var numberInput = document.getElementById("numberInput").value;
+      var numbers = numberInput.split(",").map(function(num) {
+        return parseFloat(num.trim());
+      });
+
+      var max = findMax(numbers);
+      var min = findMin(numbers);
+      var sum = calculateSum(numbers);
+      var average = calculateAverage(numbers);
+      var reverse = reverseOrder(numbers);
+
+      document.getElementById("max").innerHTML = "Max: " + max;
+      document.getElementById("min").innerHTML = "Min: " + min;
+      document.getElementById("sum").innerHTML = "Sum: " + sum;
+      document.getElementById("average").innerHTML = "Average: " + average;
+      document.getElementById("reverse").innerHTML = "Reverse Order: " + reverse;
+    }
+
+    function findMax(numbers) {
+      return Math.max.apply(null, numbers);
+    }
+
+    function findMin(numbers) {
+      return Math.min.apply(null, numbers);
+    }
+
+    function calculateSum(numbers) {
+      return numbers.reduce(function(sum, num) {
+        return sum + num;
+      }, 0);
+    }
+
+    function calculateAverage(numbers) {
+      var sum = calculateSum(numbers);
+      return sum / numbers.length;
+    }
+
+    function reverseOrder(numbers) {
+      return numbers.reverse().join(", ");
+    }
+  </script>
+</body>
+</html>

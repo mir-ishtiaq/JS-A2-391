@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>Hero Converter</title>
+</head>
+
+<body>
+  <a href="Quotebox.html">Quotebox</a><br>
+  <a href="Magic.html">Magic!</a><br>
+  <a href="Math.html">Number Analysis</a><br>
+  <input type="text" id="valueInput">
+  <select id="unitSelect">
+    <option value="kg">Kilograms to Pounds</option>
+    <option value="lb">Pounds to Kilograms</option>
+  </select>
+  <button onclick="convert()">Convert</button>
+  <span id="result"></span>
+
+  <script>
+    function convert() {
+      var valueInput = document.getElementById("valueInput");
+      var unitSelect = document.getElementById("unitSelect");
+      var result = document.getElementById("result");
+      
+      var value = parseFloat(valueInput.value);
+      var unit = unitSelect.value;
+
+      if (unit === "kg") {
+        var pounds = value * 2.2046;
+        result.innerHTML = value + " kilograms = " + pounds.toFixed(2) + " pounds.";
+      } else if (unit === "lb") {
+        var kilograms = value * 0.4536;
+        result.innerHTML = value + " pounds = " + kilograms.toFixed(2) + " kilograms.";
+      }
+    }
+  </script>
+</body>
+</html>

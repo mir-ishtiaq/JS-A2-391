@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>Quote Box</title>
+  <style>
+    .quote-box {
+      border: 1px solid black;
+      padding: 10px;
+      margin: 20px auto;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <a href="HeroConverter.html">Hero Converter</a><br>
+  <a href="Magic.html">Magic!</a><br>
+  <a href="Math.html">Number Analysis</a><br>
+  <div class="quote-box" id="quoteBox"></div>
+  <button onclick="changeColor('red')">Red</button>
+  <button onclick="changeColor('blue')">Blue</button>
+  <button onclick="changeColor('green')">Green</button>
+  <button onclick="changeColor('yellow')">Yellow</button>
+  <button onclick="displayQuote()">New Quote</button>
+
+  <script>
+    var quotes = [
+      "True wisdom comes not from knowledge, but from understanding.",
+      "The only way to do great work is to love what you do.",
+      "In the middle of every difficulty lies opportunity.",
+      "The best way to predict the future is to create it.",
+      "Success is not the key to happiness. Happiness is the key to success.",
+      "Believe you can and you're halfway there."
+    ];
+
+    function getRandomQuote() {
+      var randomIndex = Math.floor(Math.random() * quotes.length);
+      return quotes[randomIndex];
+    }
+
+    function displayQuote() {
+      var quoteBox = document.getElementById("quoteBox");
+      var quote = getRandomQuote();
+      quoteBox.innerHTML = quote;
+    }
+
+    function changeColor(color) {
+      var quoteBox = document.getElementById("quoteBox");
+      quoteBox.style.color = color;
+      quoteBox.style.borderColor = color;
+      quoteBox.style.backgroundColor = "light" + color;
+      quoteBox.style.fontFamily = "Arial, sans-serif";
+      quoteBox.style.fontSize = "20px";
+    }
+
+    displayQuote();
+  </script>
+</body>
+</html>
